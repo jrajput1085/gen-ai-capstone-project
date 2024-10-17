@@ -1,6 +1,6 @@
 # gen-ai-capstone-project
 
-## This repository contains code for GEN AI project for :
+## GEN AI project for :
 ### Exploring sematic search cpabilties of vector databases for web application content search.
 
 ### Exploring text embeddings model for generating text embeddings which will be used for vector data base search and later on with RAG architecture.
