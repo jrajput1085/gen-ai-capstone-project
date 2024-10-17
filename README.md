@@ -10,6 +10,8 @@
 ## There are two different GEN AI chat agents whih are built using RAG architecture:
 
 ### Web application chat agent which can be used for search, learn about a feature, navigation etc using natural languagae processing (NLP). 
+### Conversational chat agent which can be used to search as well as do conversation based on previous chat history.
+
 #### In order to run the app perform following steps:
 ##### Create new ".env" file in the root of project and add entries following variables - OPENAI_API_KEY, VECTOR_DATABASE_LOCAL_PERSIST_DIR, VECTOR_DATABASE_COLLECTION_NAME, GCP_PROJECT_ID, GCP_LOCATION, TEXT_EMBEDDINGS_MODEL_NAME
 ##### Install python packages
@@ -30,4 +32,3 @@ npm i
 ````
 npm run start
 ```` 
-### Conversational chat agent which can be used to search as well as do conversation based on previous chat history.
