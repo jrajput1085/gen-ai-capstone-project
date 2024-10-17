@@ -1,0 +1,22 @@
+[
+  {
+    "title": "SampleNgSpa",
+    "url": "http://localhost:4200/balances",
+    "html": "menu\nSample Angular SPA\nSearch\nHome\nPositions\nBalances\n\nThis is balances page.\n\nBalances view is used for showing list of accounts and there balances.\nAI Agent"
+  },
+  {
+    "title": "SampleNgSpa",
+    "url": "http://localhost:4200/positions",
+    "html": "menu\nSample Angular SPA\nSearch\nHome\nPositions\nBalances\n\nThis is psoitions page.\n\nPositions view is used for showing list of positions which can be selected for trade.\nAI Agent"
+  },
+  {
+    "title": "SampleNgSpa",
+    "url": "http://localhost:4200/home",
+    "html": "menu\nSample Angular SPA\nSearch\nHome\nPositions\nBalances\n\nhome works!\n\nAI Agent"
+  },
+  {
+    "title": "SampleNgSpa",
+    "url": "http://localhost:4200/",
+    "html": "menu\nSample Angular SPA\nSearch\nHome\nPositions\nBalances\nAI Agent"
+  }
+]
