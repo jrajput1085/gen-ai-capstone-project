@@ -1,0 +1,48 @@
+<div>
+  <mat-toolbar class="main-header">
+    <button mat-icon-button class="menu-toggle" aria-label="Menu toggle" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Sample Angular SPA</span>
+    <span><input class="search-input" type="text" [(ngModel)]="serachInput" cdkOverlayOrigin #trigger="cdkOverlayOrigin" /></span>
+    <span><button class="search-btn" (click)="searchClick()">Search</button></span>
+    <ng-template
+      cdkConnectedOverlay
+      [cdkConnectedOverlayOrigin]="trigger"
+      (overlayOutsideClick)="toggleOverlay()"
+      [cdkConnectedOverlayOpen]="isOpen"
+    >
+      <div class="search-results">
+        <div class="loading" *ngIf="searchResultsLoading">loading...</div>
+        <div class="search-results-content" *ngIf="!searchResultsLoading">
+          <div *ngFor="let serachResult of serachResults" class="search-result">
+            <span *ngIf="serachResult.actionLink" class="actionLink" (click)="onActionLinkClick(serachResult.data)">{{serachResult.data}}</span>
+            <span *ngIf="!serachResult.actionLink">{{serachResult.data}}</span>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </mat-toolbar>
+  <mat-sidenav-container class="main-layout-container">
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+        <div *ngFor="let menuItem of menuItems">
+          <a mat-flat-button routerLink="{{menuItem.value}}">{{menuItem.label}}</a>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet>
+      </router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <mat-toolbar class="main-footer">
+    <span><button class="agent-btn" (click)="toggleAgentOverlay()" cdkOverlayOrigin #triggerAgent="cdkOverlayOrigin">AI Agent</button></span>
+    <ng-template
+      cdkConnectedOverlay
+      [cdkConnectedOverlayOrigin]="triggerAgent"
+      (overlayOutsideClick)="toggleAgentOverlay()"
+      [cdkConnectedOverlayOpen]="isAgentOpen">
+      <app-chatbot></app-chatbot>
+    </ng-template>
+    <span>&nbsp;&nbsp;</span>
+  </mat-toolbar>
+</div>

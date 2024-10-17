@@ -14,10 +14,10 @@ class VectorStore:
         # Load env variables
         self.VECTOR_DATABASE_LOCAL_PERSIST_DIR = os.environ.get('VECTOR_DATABASE_LOCAL_PERSIST_DIR')
         self.TEXT_EMBEDDINGS_MODEL_NAME = os.environ.get('TEXT_EMBEDDINGS_MODEL_NAME')
-        GCP_PROJECT_ID = os.environ.get('GCP_PROJECT_ID')
-        GCP_LOCATION = os.environ.get('GCP_LOCATION')
+        # GCP_PROJECT_ID = os.environ.get('GCP_PROJECT_ID')
+        # GCP_LOCATION = os.environ.get('GCP_LOCATION')
         # Initialize Vertex AI API once per session
-        vertexai.init(project=GCP_PROJECT_ID, location=GCP_LOCATION)
+        # vertexai.init(project=GCP_PROJECT_ID, location=GCP_LOCATION)
         self.persistent_client = chromadb.PersistentClient(path=self.VECTOR_DATABASE_LOCAL_PERSIST_DIR)
     
     def load_from_json(self, file_name, collection_name_input):
@@ -33,7 +33,8 @@ class VectorStore:
         docs = text_splitter.split_documents(documents)
         print(f"# of documents = {len(docs)}")
         # Get embeddings from text embeddings model and load vector db
-        embedding = VertexAIEmbeddings(model_name=self.TEXT_EMBEDDINGS_MODEL_NAME)
+        # embedding = VertexAIEmbeddings(model_name=self.TEXT_EMBEDDINGS_MODEL_NAME)
+        embedding = OpenAIEmbeddings()
         vector_db = Chroma.from_documents(docs, 
                                           embedding = embedding, 
                                           collection_name=collection_name_input, 
@@ -49,7 +50,8 @@ class VectorStore:
         return self.persistent_client.get_collection(collection_name).get()
     
     def similarity_search(self, collection_name_input, input):
-        embeddings = VertexAIEmbeddings(model_name=self.TEXT_EMBEDDINGS_MODEL_NAME)
+        # embeddings = VertexAIEmbeddings(model_name=self.TEXT_EMBEDDINGS_MODEL_NAME)
+        embeddings = OpenAIEmbeddings()
         vectordb = Chroma(
                 persist_directory=self.VECTOR_DATABASE_LOCAL_PERSIST_DIR, 
                 embedding_function=embeddings,
@@ -61,7 +63,8 @@ class VectorStore:
         return vectordb.similarity_search_with_score(input, 2)
     
     def get_retriever(self, collection_name_input):
-        embeddings = VertexAIEmbeddings(model_name=self.TEXT_EMBEDDINGS_MODEL_NAME)
+        # embeddings = VertexAIEmbeddings(model_name=self.TEXT_EMBEDDINGS_MODEL_NAME)
+        embeddings = OpenAIEmbeddings()
         vectordb = Chroma(
             persist_directory=self.VECTOR_DATABASE_LOCAL_PERSIST_DIR, 
             embedding_function=embeddings,

@@ -1,22 +1,50 @@
+import json
 import os
+import re
+from typing import List, Optional
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
 from vector_store import VectorStore 
-from langchain_google_vertexai import VertexAI
+from langchain_google_vertexai import VertexAI, ChatVertexAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains import create_history_aware_retriever
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.memory import ConversationBufferMemory
 from langchain_core.prompts import MessagesPlaceholder
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
 class RetrievalInput(BaseModel):
     data: str
 
 class SearchInput(BaseModel):
     data: str
+
+# def extract_json(message) -> List[dict]:
+
+#     print("JSON to me extracted---->" + message)
+#     """Extracts JSON content from a string where JSON is embedded between \`\`\`json and \`\`\` tags.
+
+#     Parameters:
+#         text (str): The text containing the JSON content.
+
+#     Returns:
+#         list: A list of extracted JSON strings.
+#     """
+#     text = message
+#     # Define the regular expression pattern to match JSON blocks
+#     pattern = r"\`\`\`json(.*?)\`\`\`"
+
+#     # Find all non-overlapping matches of the pattern in the string
+#     matches = re.findall(pattern, text, re.DOTALL)
+
+#     # Return the list of matched JSON strings, stripping any leading or trailing whitespace
+#     try:
+#         return [json.loads(match.strip()) for match in matches]
+#     except Exception:
+#         raise ValueError(f"Failed to parse: {message}")
 
 def format_docs(docs):
         return "\n\n".join(doc.page_content for doc in docs)
@@ -63,15 +91,18 @@ async def simiariySearch(input: SearchInput):
 async def retrieve(input: RetrievalInput):
     retriever = vectorStore.get_retriever(os.environ.get('VECTOR_DATABASE_COLLECTION_NAME'))
 
-    llm = VertexAI(
-            model_name="gemini-1.5-flash-001",
-            max_output_tokens=256,
-            temperature=0.1,
-            top_p=0.8,
-            top_k=40,
-            verbose=True,
-        )
+    # llm = ChatVertexAI(
+    #         model_name=os.environ.get("LLM_MODEL_NAME"),
+    #         max_output_tokens=256,
+    #         temperature=0.1,
+    #         top_p=0.8,
+    #         top_k=40,
+    #         verbose=True,
+    #         generation_config={"response_mime_type": "application/json"}
+    #     )
     
+    llm = ChatOpenAI(model_name='gpt-3.5-turbo', temperature=0, streaming=True)
+
     chat_history = memory.load_memory_variables({})["chat_history"]
 
     prompt = ChatPromptTemplate.from_messages([
@@ -106,15 +137,15 @@ async def retrieve(input: RetrievalInput):
         MessagesPlaceholder(variable_name="chat_history"),
         ("user", """Question: {input}"""),
         ("user", """
-        Format in the following JSON schema {{"output":value, "actionLink": value}}
-        Do not include action link in json response if user is not trying to navigate to view.""")
+        Format in the following JSON schema {{"output": "value", "actionLink": "value"}}
+        Do not include action link in json response if user is not trying to navigate to view.
+        Include action link if user is trying to navigate to a view or askig to take to that view.""")
     ])
     retriever_chain = create_history_aware_retriever(llm, retriever, prompt)
 
     document_chain = create_stuff_documents_chain(llm, prompt)
     qa_chain = create_retrieval_chain(retriever_chain, document_chain)
     response = qa_chain.invoke({"input": input.data, "context": retriever|format_docs, "chat_history": chat_history})
+    # response['answer'] = extract_json(response['answer'].replace("'", "\""))
     memory.save_context({"input": input.data}, {"output": response['answer']})
-
     return response['answer']
-
