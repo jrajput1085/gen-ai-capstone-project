@@ -210,4 +210,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-chat_bot_api/local_chroma_db
+chat_bot_api/local_chroma_db*
+
+INWORKS*

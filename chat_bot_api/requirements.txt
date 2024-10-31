@@ -1,6 +1,7 @@
 apify-client
 chromadb
 langchain
+langgraph
 langchain-community
 langchain-core
 langchain-openai
