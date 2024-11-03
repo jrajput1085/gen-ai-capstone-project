@@ -27,6 +27,9 @@
     "@langchain/community": "^0.0.57",
     "@mlc-ai/web-llm": "^0.2.35",
     "express": "^4.18.2",
+    "primeng": "^17.18.11",
+    "primeflex": "^3.2.1",
+    "primeicons": "7.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

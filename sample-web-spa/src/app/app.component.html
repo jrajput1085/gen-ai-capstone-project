@@ -4,6 +4,10 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span>Sample Angular SPA</span>
+    <span>&nbsp;</span>
+    <div class="card">
+      <p-menubar [model]="horizontalMenuItems" />
+    </div>
     <span><input class="search-input" type="text" [(ngModel)]="serachInput" cdkOverlayOrigin #trigger="cdkOverlayOrigin" /></span>
     <span><button class="search-btn" (click)="searchClick()">Search</button></span>
     <ng-template
@@ -27,6 +31,7 @@
     <mat-sidenav #sidenav mode="side" [(opened)]="opened">
         <div *ngFor="let menuItem of menuItems">
           <a mat-flat-button routerLink="{{menuItem.value}}">{{menuItem.label}}</a>
+           <!-- <a mat-flat-button>{{menuItem.label}}</a> -->
         </div>
     </mat-sidenav>
     <mat-sidenav-content>

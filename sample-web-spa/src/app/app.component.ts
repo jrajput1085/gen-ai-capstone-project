@@ -12,7 +12,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ChatbotComponent } from './chatbot/chatbot.component';
-
+import { MenubarModule } from 'primeng/menubar';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +31,8 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
     MatToolbarModule,
     OverlayModule,
     HttpClientModule,
-    ChatbotComponent
+    ChatbotComponent,
+    MenubarModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.less'
@@ -45,12 +47,119 @@ export class AppComponent {
   searchResultsLoading: boolean = true;
   serachResults: any = [];
   menuItems: Array<any> = [
-    {label: 'Home', value: 'home'},
+    {label: 'Bookmarks', value: ''},
+    {label: 'Recent Entities', value: ''},
+    {label: 'Browse', value: ''},
     {label: 'Positions', value: 'positions'},
-    {label: 'Balances', value: 'balances'}
+    {label: 'Balances', value: 'balances'},
+    {label: 'Account Overview', value: 'account-overview'},
+    {label: 'Client Overview', value: 'client-overview'},
+    {label: 'Client Accounts', value: 'client-accounts'},
+    {label: 'Trade Equities', value: 'trade-equity'},
+    {label: 'Trade Fixed Income', value: 'trade-fixed-income'},
+    {label: 'Trade Option', value: 'trade-option'},
+    {label: 'Research Marketing Overview', value: 'research-marketing-overview'}
   ];
+  horizontalMenuItems: MenuItem[] | undefined;
 
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(private httpClient: HttpClient, private router: Router) {
+    this.horizontalMenuItems = [
+      {
+          label: 'Home',
+          icon: 'pi pi-home',
+          command: () => {
+            this.router.navigate(["/home"]);
+          }
+      },
+      {
+          label: 'Positions',
+          icon: 'pi pi-box',
+          command: () => {
+            this.router.navigate(["/positions"]);
+          }
+      },
+      {
+          label: 'Balances',
+          icon: 'pi pi-box',
+          command: () => {
+            this.router.navigate(["/balances"]);
+          }
+      },
+      {
+          label: 'Account Views',
+          icon: 'pi pi-box',
+          items: [
+              {
+                  label: 'Account Overview',
+                  icon: 'pi pi-box',
+                  command: () => {
+                    this.router.navigate(["/account-overview"]);
+                  }
+              }
+          ]
+      },
+      {
+          label: 'Client Views',
+          icon: 'pi pi-box',
+          items: [
+              {
+                  label: 'Client Overview',
+                  icon: 'pi pi-box',
+                  command: () => {
+                    this.router.navigate(["/client-overview"]);
+                  }
+              },
+              {
+                  label: 'Client Accounts',
+                  icon: 'pi pi-box',
+                  command: () => {
+                    this.router.navigate(["/client-accounts"]);
+                  }
+              }
+          ]
+      },
+      {
+          label: 'Trading',
+          icon: 'pi pi-box',
+          items: [
+              {
+                  label: 'Equity',
+                  icon: 'pi pi-box',
+                  command: () => {
+                    this.router.navigate(["/trade-equity"]);
+                  }
+              },
+              {
+                  label: 'Fixed Income',
+                  icon: 'pi pi-box',
+                  command: () => {
+                    this.router.navigate(["/trade-fixed-income"]);
+                  }
+              },
+              {
+                  label: 'Options',
+                  icon: 'pi pi-box',
+                  command: () => {
+                    this.router.navigate(["/trade-option"]);
+                  }
+              }
+          ]
+      },
+      {
+          label: 'Research',
+          icon: 'pi pi-box',
+          items: [
+              {
+                  label: 'Marketing Overview',
+                  icon: 'pi pi-box',
+                  command: () => {
+                    this.router.navigate(["/research-marketing-overview"]);
+                  }
+              }
+          ]
+      }
+  ]
+  }
 
   toggleOverlay() {
     this.isOpen = !this.isOpen;

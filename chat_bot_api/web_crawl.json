@@ -1,22 +1,52 @@
 [
   {
     "title": "SampleNgSpa",
+    "url": "http://localhost:4200/research-marketing-overview",
+    "html": "menu\nSample Angular SPA\n \nHome\nPositions\nBalances\nAccount Views\nClient Views\nTrading\nResearch\nSearch\nBookmarks\nRecent Entities\nBrowse\nPositions\nBalances\nAccount Overview\nClient Overview\nClient Accounts\nTrade Equities\nTrade Fixed Income\nTrade Option\nResearch Marketing Overview\nMarket Overview\n\nThis component provides market insights and economic data. • Market Overview • Market Indices (S&P 500, Nasdaq, etc.) • Sector Performance • Economic Data (Interest Rates, Inflation) • Equity Research • Stock Screener • Analyst Reports • Fundamental Data (P/E Ratios, EPS, etc.) • Price Targets and Ratings • Fixed Income Research • Bond Yield Curves • Credit Ratings • Fixed Income Analysis Reports • Mutual Fund Research • Fund Comparison Tools • Fund Performance Ratings • Research Reports on Mutual Funds • Economic Calendar • Upcoming Economic Events (Earnings, GDP reports) • Historical Event Data • News • Market News (Stocks, Bonds, Alternatives) • Advisor-Specific News (Regulatory Changes, Industry Trends)\n\nAI Agent\n  "
+  },
+  {
+    "title": "SampleNgSpa",
+    "url": "http://localhost:4200/trade-option",
+    "html": "menu\nSample Angular SPA\n \nHome\nPositions\nBalances\nAccount Views\nClient Views\nTrading\nResearch\nSearch\nBookmarks\nRecent Entities\nBrowse\nPositions\nBalances\nAccount Overview\nClient Overview\nClient Accounts\nTrade Equities\nTrade Fixed Income\nTrade Option\nResearch Marketing Overview\nOptions Trading\n\nThis component handles options trading functionality. Options Chain Viewer • Option Strategy Builder • Option Order Entry • Order Tracking/Execution\n\nAI Agent\n  "
+  },
+  {
+    "title": "SampleNgSpa",
+    "url": "http://localhost:4200/trade-fixed-income",
+    "html": "menu\nSample Angular SPA\n \nHome\nPositions\nBalances\nAccount Views\nClient Views\nTrading\nResearch\nSearch\nBookmarks\nRecent Entities\nBrowse\nPositions\nBalances\nAccount Overview\nClient Overview\nClient Accounts\nTrade Equities\nTrade Fixed Income\nTrade Option\nResearch Marketing Overview\nFixed Income Trading\n\nThis component handles fixed income trading functionality. • Bond Search and Listings • Fixed Income Order Entry • Yield Curve Analysis • Order Status & Execution\n\nAI Agent\n  "
+  },
+  {
+    "title": "SampleNgSpa",
+    "url": "http://localhost:4200/trade-equity",
+    "html": "menu\nSample Angular SPA\n \nHome\nPositions\nBalances\nAccount Views\nClient Views\nTrading\nResearch\nSearch\nBookmarks\nRecent Entities\nBrowse\nPositions\nBalances\nAccount Overview\nClient Overview\nClient Accounts\nTrade Equities\nTrade Fixed Income\nTrade Option\nResearch Marketing Overview\nEquity Trading\n\nThis component handles stock trading functionality. Equity Trading • Stock Quotes • Stock Order Entry • Order Confirmation • Execution Reports • Portfolio Balancing Tools • Trade History • Historical Orders & Trade Records • Trade Analytics and Insights\n\nAI Agent\n  "
+  },
+  {
+    "title": "SampleNgSpa",
+    "url": "http://localhost:4200/client-accounts",
+    "html": "menu\nSample Angular SPA\n \nHome\nPositions\nBalances\nAccount Views\nClient Views\nTrading\nResearch\nSearch\nBookmarks\nRecent Entities\nBrowse\nPositions\nBalances\nAccount Overview\nClient Overview\nClient Accounts\nTrade Equities\nTrade Fixed Income\nTrade Option\nResearch Marketing Overview\nClient Accounts\n\nThis component manages client accounts and transactions.\n\nAI Agent\n  "
+  },
+  {
+    "title": "SampleNgSpa",
+    "url": "http://localhost:4200/client-overview",
+    "html": "menu\nSample Angular SPA\n \nHome\nPositions\nBalances\nAccount Views\nClient Views\nTrading\nResearch\nSearch\nBookmarks\nRecent Entities\nBrowse\nPositions\nBalances\nAccount Overview\nClient Overview\nClient Accounts\nTrade Equities\nTrade Fixed Income\nTrade Option\nResearch Marketing Overview\nClient Overview\n\nThis component manages the client's overview and profile. • Client Overview • Client Dashboard (Summary of Assets, Liabilities, Goals) • Profile Management (Contact Information, Preferences) • Client Accounts • List of Accounts • Account Detail Views (Holdings, Balances) • Account Transactions • Account Statements & Reports • Client Risk Profile • Risk Assessment Questionnaire • Risk Profile Report • Client Goals • Goals Setup (Retirement, Education, etc.) • Tracking Goal Progress • Document Vault • Client Document Uploads/Storage • Shared Documents with Client (e.g., Contracts, Statements)\n\nAI Agent\n  "
+  },
+  {
+    "title": "SampleNgSpa",
+    "url": "http://localhost:4200/account-overview",
+    "html": "menu\nSample Angular SPA\n \nHome\nPositions\nBalances\nAccount Views\nClient Views\nTrading\nResearch\nSearch\nBookmarks\nRecent Entities\nBrowse\nPositions\nBalances\nAccount Overview\nClient Overview\nClient Accounts\nTrade Equities\nTrade Fixed Income\nTrade Option\nResearch Marketing Overview\nAccount Overview\n\nThis component handles account views and balance details. • Account Overview • Balance and Asset Allocation • Recent Transactions • Performance Summary • Account Holdings • Current Positions • Performance by Security • Asset Class Allocation • Transactions • Transaction History (Buy, Sell, Dividends, etc.) • Pending Transactions • Custom Transaction Reports • Account Performance • Performance Graphs (Time-based, Asset-based) • Comparison to Benchmarks • Historical Performance Metrics\n\nAI Agent\n  "
+  },
+  {
+    "title": "SampleNgSpa",
     "url": "http://localhost:4200/balances",
-    "html": "menu\nSample Angular SPA\nSearch\nHome\nPositions\nBalances\n\nThis is balances page.\n\nBalances view is used for showing list of accounts and there balances.\nAI Agent"
+    "html": "menu\nSample Angular SPA\n \nHome\nPositions\nBalances\nAccount Views\nClient Views\nTrading\nResearch\nSearch\nBookmarks\nRecent Entities\nBrowse\nPositions\nBalances\nAccount Overview\nClient Overview\nClient Accounts\nTrade Equities\nTrade Fixed Income\nTrade Option\nResearch Marketing Overview\nThis is balances page.\nBalances view is used for showing list of accounts and there balances.\nAI Agent\n  "
   },
   {
     "title": "SampleNgSpa",
     "url": "http://localhost:4200/positions",
-    "html": "menu\nSample Angular SPA\nSearch\nHome\nPositions\nBalances\n\nThis is psoitions page.\n\nPositions view is used for showing list of positions which can be selected for trade.\nAI Agent"
-  },
-  {
-    "title": "SampleNgSpa",
-    "url": "http://localhost:4200/home",
-    "html": "menu\nSample Angular SPA\nSearch\nHome\nPositions\nBalances\n\nhome works!\n\nAI Agent"
+    "html": "menu\nSample Angular SPA\n \nHome\nPositions\nBalances\nAccount Views\nClient Views\nTrading\nResearch\nSearch\nBookmarks\nRecent Entities\nBrowse\nPositions\nBalances\nAccount Overview\nClient Overview\nClient Accounts\nTrade Equities\nTrade Fixed Income\nTrade Option\nResearch Marketing Overview\nThis is positions page.\n\n\nPositions view is used for showing list of positions which can be selected for trade.\nAI Agent\n  "
   },
   {
     "title": "SampleNgSpa",
     "url": "http://localhost:4200/",
-    "html": "menu\nSample Angular SPA\nSearch\nHome\nPositions\nBalances\nAI Agent"
+    "html": "menu\nSample Angular SPA\n \nHome\nPositions\nBalances\nAccount Views\nClient Views\nTrading\nResearch\nSearch\nBookmarks\nRecent Entities\nBrowse\nPositions\nBalances\nAccount Overview\nClient Overview\nClient Accounts\nTrade Equities\nTrade Fixed Income\nTrade Option\nResearch Marketing Overview\nHome Page\n\n\nSample SPA Home Page!\nAI Agent\n  "
   }
 ]

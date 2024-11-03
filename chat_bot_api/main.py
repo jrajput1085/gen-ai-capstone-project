@@ -198,7 +198,11 @@ async def retrieveWithTools(input: RetrievalInput):
 
     # If no tool calls return the basic response. This can happen when query is for out of context data
     if len(response.choices[0].message.tool_calls) == 0:
-        return RetrieveWithToolOutputModel(output=content, actionLink="", takeAction=False)
+        try:
+            return RetrieveWithToolOutputModel(json.loads(content))
+        except ValueError as e:
+             return RetrieveWithToolOutputModel(output=content, actionLink="", takeAction=False)
+        
     
     tool_call = response.choices[0].message.tool_calls[0]
 
