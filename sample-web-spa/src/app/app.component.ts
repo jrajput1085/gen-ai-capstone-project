@@ -49,16 +49,7 @@ export class AppComponent {
   menuItems: Array<any> = [
     {label: 'Bookmarks', value: ''},
     {label: 'Recent Entities', value: ''},
-    {label: 'Browse', value: ''},
-    {label: 'Positions', value: 'positions'},
-    {label: 'Balances', value: 'balances'},
-    {label: 'Account Overview', value: 'account-overview'},
-    {label: 'Client Overview', value: 'client-overview'},
-    {label: 'Client Accounts', value: 'client-accounts'},
-    {label: 'Trade Equities', value: 'trade-equity'},
-    {label: 'Trade Fixed Income', value: 'trade-fixed-income'},
-    {label: 'Trade Option', value: 'trade-option'},
-    {label: 'Research Marketing Overview', value: 'research-marketing-overview'}
+    {label: 'Browse', value: ''}
   ];
   horizontalMenuItems: MenuItem[] | undefined;
 
