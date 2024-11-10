@@ -163,7 +163,7 @@ async def retrieveWithTools(input: RetrievalInput):
     -Do not introduce examples outside of the context
     -Do not answer if context is absent
     -Limit responses to three or four sentences for clarity and conciseness
-    -If user is asking for an action like navigation, respond with link to the feature.
+    -If user is asking for an action like navigation, respond with link to the feature without including actual host name.
     If you don't know the answer, just say that you don't know, don't try to make up an answer.
     -------------------------------------------------------
     Here are Helpful Question and Answers mentioned below:
