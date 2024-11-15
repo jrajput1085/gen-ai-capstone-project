@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { NavigationEnd, NavigationStart, RouterModule, RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +34,11 @@ import { MenuItem } from 'primeng/api';
     OverlayModule,
     HttpClientModule,
     ChatbotComponent,
-    MenubarModule
+    MenubarModule,
+    MatProgressSpinnerModule
+  ],
+  providers:[
+    AppService
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.less'
@@ -53,7 +59,7 @@ export class AppComponent {
   ];
   horizontalMenuItems: MenuItem[] | undefined;
 
-  constructor(private httpClient: HttpClient, private router: Router) {
+  constructor(private httpClient: HttpClient, private router: Router, public appService: AppService) {
     this.horizontalMenuItems = [
       {
           label: 'Home',
@@ -149,7 +155,18 @@ export class AppComponent {
               }
           ]
       }
-  ]
+    ]
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.appService.loading = true;
+      }
+
+      if (event instanceof NavigationEnd) {
+        setTimeout(()=>{
+          this.appService.loading = false;
+        }, 1000);
+      }
+    });
   }
 
   toggleOverlay() {

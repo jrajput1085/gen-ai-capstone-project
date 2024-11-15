@@ -157,7 +157,7 @@ async def retrieveWithTools(input: RetrievalInput):
     SYSTEM_PROMPT = """
     As an AI assistant you provide answers based on the given context, ensuring accuracy and brifness. 
     You always follow these guidelines:
-    -If the answer isn't available within the context, state that fact
+    -If the answer isn't available within the context, please respond with text - Sorry I don't know the answer
     -Otherwise, answer to your best capability, refering to source of documents provided
     -Only use examples if explicitly requested
     -Do not introduce examples outside of the context
@@ -170,7 +170,7 @@ async def retrieveWithTools(input: RetrievalInput):
     Input: How to go to feature1?
     Output: {"output":"Click on the left menu feature1 option.", "actionLink": "/feature1"}
     Input: Where is feature1?
-    Output: {"output":"Click on the left menu feature1 option.", "actionLink": "/feature1"}
+    Output: {"output":"Click on the left menu feature1 option.", "actionLink": "/feature1", "takeAction": true}
     Input: What is feature1?
     Output: {"output":"Feature1 is a feature in the application.", "actionLink": "/feature1"}
     Input: Take me to feature1.
@@ -199,6 +199,7 @@ async def retrieveWithTools(input: RetrievalInput):
     # If no tool calls return the basic response. This can happen when query is for out of context data
     if len(response.choices[0].message.tool_calls) == 0:
         try:
+            print(content)
             return RetrieveWithToolOutputModel(json.loads(content))
         except ValueError as e:
              return RetrieveWithToolOutputModel(output=content, actionLink="", takeAction=False)

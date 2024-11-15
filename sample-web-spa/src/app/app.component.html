@@ -35,8 +35,13 @@
         </div>
     </mat-sidenav>
     <mat-sidenav-content>
-      <router-outlet>
-      </router-outlet>
+      <div *ngIf="appService.loading">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div>
+        <router-outlet>
+        </router-outlet>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
   <mat-toolbar class="main-footer">
